@@ -1,0 +1,26 @@
+import numpy as np
+import pandas as pd
+from typing import List, Tuple
+
+from optimizers.weights_optimizer import WeightsOptimizer, Status
+
+class NaiveMdsUpdrsOptimizer(WeightsOptimizer):
+    """
+    Naive implementation of WeightsOptimizer where weights are set to 1 for MDS-UPDRS parts 1-3 and 0 otherwise.
+    """
+
+    def __init__(self, data: pd.DataFrame, items: List[str], version: str):
+        super().__init__(name="MDS-UPDRS", data=data, items=items, version=version)
+
+    def calc_weights(self) -> Tuple[np.ndarray, str]:
+        """
+        Naively set weights to 1 for MDS-UPDRS items and 0 otherwise.
+        
+        Returns:
+            Tuple[np.ndarray, str]: weights and the calculation status.
+        """
+        # Create weights: 1 for items starting with 'NP', 0 otherwise
+        naive_weights = np.array([1 if item.startswith('NP') else 0 for item in self.items])
+        self.status = Status.DONE
+        self.weights = naive_weights
+        return self.weights, self.status

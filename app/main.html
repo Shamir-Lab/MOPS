@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PD Quick Self-Assessment</title>
+  <!-- Bootstrap CSS (CDN) -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css"
+  >
+  <style>
+    body {
+      background-color: #e6f7ff; /* Very light blue background */
+    }
+    .question-card {
+      margin-bottom: 1.5rem;
+      border-radius: 0.5rem;
+    }
+    .finish-btn {
+      margin: 2rem auto;
+      display: block;
+      width: 200px;
+      font-size: 1.1rem;
+    }
+    #scoreOutput {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    .disabled-btn {
+      pointer-events: none; 
+      opacity: 0.6;
+    }
+    .disclaimer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container py-4">
+  <h1 class="text-center mb-4">PD Quick Self-Assessment</h1>
+  <p class="text-center text-muted">
+    Please answer all questions. The Finish button will become active only after all are answered.
+  </p>
+
+  <!-- Sleep Problems -->
+  <div class="card question-card">
+    <div class="card-body">
+      <h5 class="card-title">Sleep Problems</h5>
+      <p>Over the past week, have you had trouble going to sleep or staying asleep?</p>
+      <!-- 0 => no problem, 1 => yes -->
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q1_7" value="0" id="q1_7_0">
+        <label class="form-check-label" for="q1_7_0">
+          No trouble sleeping
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q1_7" value="1" id="q1_7_1">
+        <label class="form-check-label" for="q1_7_1">
+          I have some trouble going to sleep or staying asleep
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Daytime Sleepiness -->
+  <div class="card question-card">
+    <div class="card-body">
+      <h5 class="card-title">Daytime Sleepiness</h5>
+      <p>Over the past week, have you had trouble staying awake during the daytime?</p>
+      <!-- 0 => no problem, 1 => problem -->
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q1_8" value="0" id="q1_8_0">
+        <label class="form-check-label" for="q1_8_0">
+          No daytime sleepiness
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q1_8" value="1" id="q1_8_1">
+        <label class="form-check-label" for="q1_8_1">
+          I sometimes get sleepy or doze when I shouldn't
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Urinary Problems (0 => no/slight, 2 => moderate/worse) -->
+  <div class="card question-card">
+    <div class="card-body">
+      <h5 class="card-title">Urinary Problems</h5>
+      <p>Over the past week, have you had trouble with urine control (urgent need, frequent urination, accidents)?</p>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q1_10" value="0" id="q1_10_0">
+        <label class="form-check-label" for="q1_10_0">
+          No or slight problem (might feel frequent or urgent need, but no major difficulties or accidents)
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q1_10" value="2" id="q1_10_2">
+        <label class="form-check-label" for="q1_10_2">
+          Moderate or worse (significant interference with daily life, accidents, or major distress)
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Constipation Problems -->
+  <div class="card question-card">
+    <div class="card-body">
+      <h5 class="card-title">Constipation Problems</h5>
+      <p>Over the past week, have you had difficulty moving your bowels or needing extra effort?</p>
+      <!-- 0 => no, 1 => yes -->
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q1_11" value="0" id="q1_11_0">
+        <label class="form-check-label" for="q1_11_0">
+          No constipation problem
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q1_11" value="1" id="q1_11_1">
+        <label class="form-check-label" for="q1_11_1">
+          Yes, it affects me (extra effort or discomfort)
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fatigue -->
+  <div class="card question-card">
+    <div class="card-body">
+      <h5 class="card-title">Fatigue</h5>
+      <p>Over the past week, have you felt fatigued (not just sleepy or sad)?</p>
+      <!-- 0 => no, 1 => yes -->
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q1_13" value="0" id="q1_13_0">
+        <label class="form-check-label" for="q1_13_0">
+          No fatigue
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q1_13" value="1" id="q1_13_1">
+        <label class="form-check-label" for="q1_13_1">
+          Yes, I sometimes feel fatigued
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Speech -->
+  <div class="card question-card">
+    <div class="card-body">
+      <h5 class="card-title">Speech</h5>
+      <p>Over the past week, have you noticed any problems with your speech?</p>
+      <!-- 0 => no, 1 => yes -->
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q2_1" value="0" id="q2_1_0">
+        <label class="form-check-label" for="q2_1_0">
+          No speech problems
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q2_1" value="1" id="q2_1_1">
+        <label class="form-check-label" for="q2_1_1">
+          Yes, my speech is affected (e.g. soft, slurred, or needing repeats)
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Saliva and Drooling -->
+  <div class="card question-card">
+    <div class="card-body">
+      <h5 class="card-title">Saliva and Drooling</h5>
+      <p>Over the past week, have you had excessive saliva or drooling?</p>
+      <!-- 0 => no, 1 => yes -->
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q2_2" value="0" id="q2_2_0">
+        <label class="form-check-label" for="q2_2_0">
+          No drooling or excessive saliva
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q2_2" value="1" id="q2_2_1">
+        <label class="form-check-label" for="q2_2_1">
+          Yes, I experience drooling or too much saliva
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Turning in Bed -->
+  <div class="card question-card">
+    <div class="card-body">
+      <h5 class="card-title">Turning in Bed</h5>
+      <p>Over the past week, have you had trouble turning over in bed?</p>
+      <!-- 0 => no, 1 => yes -->
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q2_9" value="0" id="q2_9_0">
+        <label class="form-check-label" for="q2_9_0">
+          No problem turning in bed
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q2_9" value="1" id="q2_9_1">
+        <label class="form-check-label" for="q2_9_1">
+          Yes, I have difficulty turning (need extra effort or help)
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Getting Out of Bed (0 => no, 1 => slight, 2 => moderate/worse) -->
+  <div class="card question-card">
+    <div class="card-body">
+      <h5 class="card-title">Getting Out of Bed</h5>
+      <p>
+        Over the past week, have you had trouble getting out of bed, a car seat, or a deep chair?
+      </p>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q2_11" value="0" id="q2_11_0">
+        <label class="form-check-label" for="q2_11_0">
+          No problems
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q2_11" value="1" id="q2_11_1">
+        <label class="form-check-label" for="q2_11_1">
+          Slight difficulty (slow or need more than one try, but getting up without help)
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q2_11" value="2" id="q2_11_2">
+        <label class="form-check-label" for="q2_11_2">
+          Moderate or worse (often need help or major effort)
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Walking and Balance (0 => no/slight, 2 => moderate/worse) -->
+  <div class="card question-card">
+    <div class="card-body">
+      <h5 class="card-title">Walking and Balance</h5>
+      <p>Over the past week, have you had problems with balance or walking?</p>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q2_12" value="0" id="q2_12_0">
+        <label class="form-check-label" for="q2_12_0">
+          No problem or just slightly slow or may drag a leg. Never use a walking aid.
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q2_12" value="2" id="q2_12_2">
+        <label class="form-check-label" for="q2_12_2">
+          Moderate or worse: I usually need a cane/walker or have major balance trouble
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Freezing -->
+  <div class="card question-card">
+    <div class="card-body">
+      <h5 class="card-title">Freezing</h5>
+      <p>Over the past week, do you suddenly stop or freeze while walking?</p>
+      <!-- 0 => no, 1 => yes -->
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q2_13" value="0" id="q2_13_0">
+        <label class="form-check-label" for="q2_13_0">
+          No freezing episodes
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="q2_13" value="1" id="q2_13_1">
+        <label class="form-check-label" for="q2_13_1">
+          Yes, I freeze or get stuck sometimes
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Finish Button and Score Output -->
+  <button class="btn btn-primary finish-btn disabled-btn" id="finishBtn" onclick="calculateScore()" disabled>
+    Finish
+  </button>
+  <div id="scoreOutput" class="text-center"></div>
+
+  <!-- Disclaimer -->
+  <p class="disclaimer text-center">
+    Disclaimer: These questions are <strong>based on the MDS-UPDRS</strong>. For any clinical usage, 
+    please coordinate with the Movement Disorder Society (MDS). This tool is for informational 
+    purposes only and not a substitute for professional medical advice.
+  </p>
+</div>
+
+<script>
+// For enabling/disabling Finish button based on whether all questions are answered
+const questionNames = [
+  "q1_7", "q1_8", "q1_10", "q1_11", "q1_13",
+  "q2_1", "q2_2", "q2_9", "q2_11", "q2_12", "q2_13"
+];
+
+// Weighted thresholds array
+// "item": name of question, "threshold": numeric, "weight": score added if userValue >= threshold
+const thresholds = [
+  { item: "q1_7",  threshold: 1, weight: 13 },
+  { item: "q1_8",  threshold: 1, weight: 25 },
+  { item: "q1_10", threshold: 2, weight: 55 },
+  { item: "q1_11", threshold: 1, weight: 43 },
+  { item: "q1_13", threshold: 1, weight: 30 },
+  { item: "q2_1",  threshold: 1, weight: 44 },
+  { item: "q2_2",  threshold: 1, weight: 51 },
+  { item: "q2_9",  threshold: 1, weight: 66 },
+  // For "Getting Out of Bed" we have two lines for thresholds
+  { item: "q2_11", threshold: 1, weight: 52 },
+  { item: "q2_11", threshold: 2, weight: 45 },
+  { item: "q2_12", threshold: 2, weight: 100 },
+  { item: "q2_13", threshold: 1, weight: 67 },
+];
+
+document.addEventListener("DOMContentLoaded", () => {
+  questionNames.forEach(qName => {
+    const radios = document.querySelectorAll(`input[name="${qName}"]`);
+    radios.forEach(radio => {
+      radio.addEventListener("change", checkAllAnswered);
+    });
+  });
+});
+
+// Called whenever a radio changes, to see if all are answered
+function checkAllAnswered() {
+  for (let qName of questionNames) {
+    const selected = document.querySelector(`input[name="${qName}"]:checked`);
+    if (!selected) {
+      disableFinish();
+      return;
+    }
+  }
+  // All answered
+  enableFinish();
+}
+
+function enableFinish() {
+  const finishBtn = document.getElementById("finishBtn");
+  finishBtn.disabled = false;
+  finishBtn.classList.remove("disabled-btn");
+}
+
+function disableFinish() {
+  const finishBtn = document.getElementById("finishBtn");
+  finishBtn.disabled = true;
+  finishBtn.classList.add("disabled-btn");
+}
+
+function calculateScore() {
+  let totalScore = 0;
+  thresholds.forEach(row => {
+    const userValue = parseInt(
+      document.querySelector(`input[name="${row.item}"]:checked`).value
+    );
+    if (userValue >= row.threshold) {
+      totalScore += row.weight;
+    }
+  });
+
+  // Maximum possible score is 591 (all thresholds triggered)
+  const maxScore = 591;
+
+  // Convert totalScore into a 0-10 scale
+  const severity = ((totalScore / maxScore) * 10).toFixed(2);
+    
+  const outputDiv = document.getElementById("scoreOutput");
+  outputDiv.innerHTML =
+    "Your current Parkinson's Disease severity is " + severity + "/10.<br>" +
+    "Report this score to your care taker to track your Parkinson's disease progression.";
+}
+
+</script>
+
+<!-- Bootstrap JS -->
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/js/bootstrap.bundle.min.js"
+></script>
+</body>
+</html>
