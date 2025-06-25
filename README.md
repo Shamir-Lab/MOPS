@@ -17,8 +17,6 @@ This repository contains code accompanying the paper *“Optimizing Parkinson’
 
 ```text
 .
-├── app/
-│   └── main.html                    # A demo for a short self-reported questionnaire
 ├── data/
 │   └── PPMI/                        # Where to place PPMI data files
 ├── optimizers/
@@ -27,6 +25,7 @@ This repository contains code accompanying the paper *“Optimizing Parkinson’
 ├── pipeline.ipynb                   # Main flow: data prep, optimization, evaluation, visualization
 ├── data_preparation.py              # Data filtering and encoding logic
 ├── requirements.txt                 # Dependencies for Python environment
+├── self_report_short.html           # A demo of a short self-reported questionnaire
 └── LICENSE                          # GNU General Public License
 ```
 
