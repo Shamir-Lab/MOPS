@@ -1,2 +1,2 @@
 # MOPS
-Computational pipeline for optimization of PD rating scales
+Mathematical Optimization of Parkinson's Scales
