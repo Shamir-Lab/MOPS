@@ -1,6 +1,6 @@
 # MOPS - Mathematical Optimization of Parkinson's Scale
 
-This repository contains code accompanying the paper *“Optimizing Parkinson’s Disease progression scales using computational methods.”* The main goal is to demonstrate how to learn data-driven weights for items in standard PD assessments — such as the MDS-UPDRS and MoCA — so the resulting composite scores better capture disease progression.
+This repository contains code accompanying the paper *“Optimizing Parkinson’s Disease progression scales using computational methods.”* The main goal is to demonstrate how to learn data-driven weights for items in standard Parkinson's Disease (PD) assessments — such as the MDS-UPDRS and MoCA — so the resulting composite scores better capture disease progression.
 
 **Table of Contents**  
 1. [Repository Structure](#repository-structure)  
