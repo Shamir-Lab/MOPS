@@ -78,7 +78,6 @@ To replicate our analysis:
 1. **Open JupyterLab or Jupyter Notebook**, activate your virtual environment, and navigate to the repository folder.
 2. **Open** `pipeline.ipynb`
 3. **Run** the cells in order
-4. **(Optional) Explore the self-report shortened questionnaire**: If you want to see an example of how a short self-reported form might look, open `app/main.html` in your browser.
 
 ---
 
