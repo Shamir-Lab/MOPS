@@ -8,10 +8,11 @@ This repository contains code accompanying the paper *“Optimizing Parkinson’
 1. [Repository Structure](#repository-structure)  
 2. [Installation & Dependencies](#installation--dependencies)  
    - [Gurobi Installation](#gurobi-installation)  
-3. [Data Requirements](#data-requirements)  
-4. [Usage](#usage)  
-5. [License](#license)  
-6. [Contact](#contact)
+3. [Data Requirements](#data-requirements)
+5. [Usage](#usage)
+6. [Online Tool](#online-tool)
+7. [License](#license)  
+8. [Contact](#contact)
 
 ---
 
@@ -81,10 +82,17 @@ To replicate our analysis:
 
 ---
 
+## Online Tool 
+
+Based on our results, we've created an online self-reported questionnaire that achieves good consistency with only 11 simple questions.
+
+Tool is available [here](https://shamir-lab.github.io/MOPS/self_report_short.html).
+
+---
+
 ## License
 
 This project is licensed under the terms of the [GNU General Public License v3.0](./LICENSE). You are free to use, modify, and distribute this code under the conditions detailed in the license, which requires that derivative works also be distributed under the same license.
-
 
 ---
 
